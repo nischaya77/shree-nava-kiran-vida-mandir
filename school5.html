@@ -124,7 +124,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 <form action="submit_form.php" method="post">
-    </div>
+ <form action="submit_form.php" method="post" style="max-width: 500px; margin: auto; text-align: left;">
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name" style="width: 100%; padding: 10px; margin: 10px 0;" required><br>
+    
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email" style="width: 100%; padding: 10px; margin: 10px 0;" required><br>
+    
+    <label for="message">Message:</label><br>
+    <textarea id="message" name="message" rows="5" style="width: 100%; padding: 10px; margin: 10px 0;" required></textarea><br>
+    
+    <button type="submit" style="background-color: green; color: white; padding: 10px 20px; border: none; cursor: pointer;">Submit</button>
+</form>
+   </div>
     <h3 style="color: green;">Send Us a Message</h3>
     <form action="submit_form.php" method="post" style="margin: 0 auto; width: 60%; text-align: left;">
         <label for="name" style="color: green;">Name:</label><br>
