@@ -91,7 +91,39 @@
         <p><strong>Address:</strong> Nawa Kiran Vidya Mandir, Shivagunj, Shivasatakshi 06, Jhapa, Nepal ZIP</p>
         <p><strong>Phone:</strong> 981-4076900</p>
         <p><strong>Email:</strong> <a href="mailto:nkvm2051@gmail.com" style="color: green; text-decoration: none;">nkvm2051@gmail.com</a></p>
-    </div>
+    <?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Retrieve form data
+    $name = htmlspecialchars(trim($_POST['name']));
+    $email = htmlspecialchars(trim($_POST['email']));
+    $message = htmlspecialchars(trim($_POST['message']));
+
+    // Validate inputs
+    if (empty($name) || empty($email) || empty($message)) {
+        echo "All fields are required. Please go back and fill out the form.";
+        exit;
+    }
+
+    // Email configuration
+    $to = "your-email@example.com"; // Replace with your email address
+    $subject = "New Message from $name";
+    $body = "You have received a new message:\n\n".
+            "Name: $name\n".
+            "Email: $email\n\n".
+            "Message:\n$message\n";
+    $headers = "From: $email";
+
+    // Send the email
+    if (mail($to, $subject, $body, $headers)) {
+        echo "Thank you, $name! Your message has been sent successfully.";
+    } else {
+        echo "Sorry, there was an error sending your message. Please try again later.";
+    }
+} else {
+    echo "Invalid request method.";
+}
+?>
+</div>
     <h3 style="color: green;">Send Us a Message</h3>
     <form action="submit_form.php" method="post" style="margin: 0 auto; width: 60%; text-align: left;">
         <label for="name" style="color: green;">Name:</label><br>
